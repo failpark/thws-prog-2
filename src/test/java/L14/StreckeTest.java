@@ -61,5 +61,11 @@ public class StreckeTest {
 		left.B = 3;
 		assertFalse(Strecke.intersects(left, right));
 		assertFalse(Strecke.intersects(right, left));
+		left.A = 4;
+		left.B = 4;
+		right.A = 4;
+		right.B = 4;
+		assertFalse(Strecke.intersects(left, right));
+		assertFalse(Strecke.intersects(right, left));
 	}
 }
