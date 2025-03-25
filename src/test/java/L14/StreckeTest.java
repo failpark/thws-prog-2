@@ -51,21 +51,30 @@ public class StreckeTest {
 
 	@Test
 	public void intersects() {
+//		touching
 		Strecke left = new Strecke(3, 5);
 		Strecke right = new Strecke(5, 8);
 		assertFalse(Strecke.intersects(left, right));
 		assertFalse(Strecke.intersects(right, left));
+//		intersects
 		left.B = 6;
 		assertTrue(Strecke.intersects(left, right));
 		assertTrue(Strecke.intersects(right, left));
+//		point outside
 		left.B = 3;
 		assertFalse(Strecke.intersects(left, right));
 		assertFalse(Strecke.intersects(right, left));
+//		same points
 		left.A = 4;
 		left.B = 4;
 		right.A = 4;
 		right.B = 4;
 		assertFalse(Strecke.intersects(left, right));
 		assertFalse(Strecke.intersects(right, left));
+//		same strecke
+		left.A = 3;
+		right.A = 3;
+		assertTrue(Strecke.intersects(left, right));
+		assertTrue(Strecke.intersects(right, left));
 	}
 }
