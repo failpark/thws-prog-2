@@ -19,7 +19,7 @@ public class BoardTest {
 		};
 		LaeuferImpl l = new LaeuferImpl(4, 5);
 		Brett brett = l.gibErlaubteFelder();
-		// TODO: assertArrayEquals(Object[], Object[]) use deepEquals internally?
+		// TODO: does assertArrayEquals(Object[], Object[]) use deepEquals internally?
 		assertArrayEquals(bishop_state, brett.brett);
 
 		// Ba1
