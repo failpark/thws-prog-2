@@ -1,6 +1,5 @@
-package schach;
+package L16.schach;
 
-public interface Figur
-{
-  public Brett gibErlaubteFelder();
+public interface Figur {
+	Brett gibErlaubteFelder();
 }
