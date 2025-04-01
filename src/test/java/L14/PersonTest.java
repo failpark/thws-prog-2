@@ -40,5 +40,11 @@ public class PersonTest {
 	@Test
 	public void valid_person() {
 		Person p = new Person("Daniel", "Borgs", "Sanderheinrichsleitenweg", "20", 97074, "Würzi");
+		assertEquals("Daniel", p.vorname);
+		assertEquals("Borgs", p.nachname);
+		assertEquals("Sanderheinrichsleitenweg", p.adresse.strasse);
+		assertEquals("20", p.adresse.hausnummer);
+		assertEquals(97074, p.adresse.plz);
+		assertEquals("Würzi", p.adresse.ort);
 	}
 }
