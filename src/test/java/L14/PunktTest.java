@@ -56,21 +56,15 @@ public class PunktTest {
 
 	@Test
 	public void test_valid_x() {
-		try {
-			Punkt std = get_default();
-			std.verschiebePunkt(1920, 0);
-		} catch (RuntimeException e) {
-			fail("No Error expected");
-		}
+		Punkt std = get_default();
+		std.verschiebePunkt(1920, 0);
+		assertEquals(1920, std.x);
 	}
 
 	@Test
 	public void test_valid_y() {
-		try {
-			Punkt std = get_default();
-			std.verschiebePunkt(0, 1080);
-		} catch (RuntimeException e) {
-			fail("No Error expected");
-		}
+		Punkt std = get_default();
+		std.verschiebePunkt(0, 1080);
+		assertEquals(1080, std.y);
 	}
 }
