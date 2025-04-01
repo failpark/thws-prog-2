@@ -11,7 +11,7 @@ public class Kugelvolumen {
 //		if (radius < 0) {
 //			throw new RuntimeException("Keine negativen Werte!");
 //		}
-		return 4 / 3 * Math.PI * radius * radius * radius;
+		return 4.0 / 3.0 * Math.PI * radius * radius * radius;
 	}
 
 	@Test
@@ -21,17 +21,17 @@ public class Kugelvolumen {
 
 	@Test
 	public void testOne() {
-		assertEquals(3.141, berechneKugelvolumen(1), 0.001);
+		assertEquals(4.188, berechneKugelvolumen(1), 0.001);
 	}
 
 	@Test
 	public void testFive() {
-		assertEquals(392.699, berechneKugelvolumen(5), 0.001);
+		assertEquals(523.598, berechneKugelvolumen(5), 0.001);
 	}
 
 	@Test
 	public void testNegOne() {
-		assertEquals(-3.141, berechneKugelvolumen(-1), 0.001);
+		assertEquals(-4.188, berechneKugelvolumen(-1), 0.001);
 //		try {
 //			berechneKugelvolumen(-1);
 //			fail("Runtime Exception erwartet");
