@@ -7,10 +7,9 @@ public class Main {
 	}
 
 	static void quiz() {
-		Quiz text = new TextQuiz("Was ist die Hauptstadt von Deutschland?", "Berlin");
-		Quiz multiple = new MultipleChoiceQuiz("Wie viele Protonen hat ein Wasserstoff-Atom?", new String[]{"4", "2", "1", "0"}, 2);
-		text.next = multiple;
-		Questionnaire out = new Questionnaire(text);
+		Questionnaire out = new Questionnaire();
+		out.add(new TextQuiz("Was ist die Hauptstadt von Deutschland?", "Berlin"));
+		out.add(new MultipleChoiceQuiz("Wie viele Protonen hat ein Wasserstoff-Atom?", new String[]{"4", "2", "1", "0"}, 2));
 		System.out.println(out);
 	}
 

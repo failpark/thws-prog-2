@@ -5,7 +5,12 @@ public class Student extends Person {
 		super(subject);
 	}
 
+	@Override
+	public String toString() {
+		return "Der Student besucht das Fach " + this.subject;
+	}
+
 	public void gibTaetigkeitAus() {
-		System.out.println("Der Student besucht das Fach " + this.subject);
+		System.out.println(this);
 	}
 }

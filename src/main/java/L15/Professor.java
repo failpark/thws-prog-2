@@ -5,7 +5,12 @@ public class Professor extends Person {
 		super(subject);
 	}
 
+	@Override
+	public String toString() {
+		return "Der Professor unterrichtet " + this.subject;
+	}
+
 	public void gibTaetigkeitAus() {
-		System.out.println("Der Professor unterrichtet " + this.subject);
+		System.out.println(this);
 	}
 }
