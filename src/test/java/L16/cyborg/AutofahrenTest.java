@@ -1,14 +1,11 @@
 package L16.cyborg;
 
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.*;
 import java.util.stream.*;
 
 public class AutofahrenTest {
