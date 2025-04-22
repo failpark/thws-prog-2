@@ -4,16 +4,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 
 public class Streams {
-	public static void run_test(BiConsumer<Tuple, Tup<File, File>> f, Tuple streams, Tup<File, File> files) {
+	public static long run_test(BiConsumer<Tuple, Tup<File, File>> f, Tuple streams, Tup<File, File> files) {
 		int length = 10;
 		long sum = 0;
 		for (int i = 0; i < length; i++) {
 			sum += run_timer(f, streams, files);
 		}
-		print_diff(sum / length);
+		long diff = sum / length;
+		print_diff(diff);
+		return diff;
 	}
 
 	private static long run_timer(BiConsumer<Tuple, Tup<File, File>> f, Tuple streams, Tup<File, File> files) {

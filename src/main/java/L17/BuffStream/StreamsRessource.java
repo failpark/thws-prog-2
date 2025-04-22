@@ -6,14 +6,16 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public class StreamsRessource extends Streams {
-	public static void run_test(BiConsumer<Tup<File, File>, Boolean> f, Tup<File, File> files, boolean promote) {
+	public static long run_test(BiConsumer<Tup<File, File>, Boolean> f, Tup<File, File> files, boolean promote) {
 		int length = 10;
 		long sum = 0;
 		for (int i = 0; i < length; i++) {
 			sum += run_timer(f, files, promote);
-			System.out.println("running");
+//			System.out.println("running");
 		}
-		Streams.print_diff(sum / length);
+		long diff = sum / length;
+		Streams.print_diff(diff);
+		return diff;
 	}
 
 	private static long run_timer(BiConsumer<Tup<File, File>, Boolean> f, Tup<File, File> files, boolean promote) {
@@ -30,13 +32,15 @@ public class StreamsRessource extends Streams {
 		return end - start;
 	}
 
-	public static void run_test_byte(Tup<File, File> files) {
+	public static long run_test_byte(Tup<File, File> files) {
 		int length = 10;
 		long sum = 0;
 		for (int i = 0; i < length; i++) {
 			sum += run_timer_byte(StreamsRessource::run_byte, files);
 		}
-		Streams.print_diff(sum / length);
+		long diff = sum / length;
+		Streams.print_diff(diff);
+		return diff;
 	}
 
 	public static void run(Tup<File, File> files, boolean promote) {
