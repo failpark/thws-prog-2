@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		Tup<File, File> files = new Tup<>(
-				prompt_user(),
-//				new File("./target/test.mp3"),
+//				prompt_user(),
+				new File("./target/test.mp3"),
 				new File("./target/L17_copy.mp3")
 		);
 		Tuple base = Tuple.get_base_streams(files);

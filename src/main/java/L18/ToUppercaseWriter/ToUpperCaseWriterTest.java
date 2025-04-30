@@ -1,73 +1,53 @@
 package L18.ToUppercaseWriter;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class ToUpperCaseWriterTest
-{
-  ToUpperCaseWriter writer;
-  ByteArrayOutputStream baos;
+public class ToUpperCaseWriterTest {
+	public void write(char c, String expected) {
+		try (
+				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				OutputStreamWriter osw = new OutputStreamWriter(baos);
+				ToUpperCaseWriter writer = new ToUpperCaseWriter(osw);
+		) {
+			writer.write(c);
+			writer.flush();
+			String uppercase = baos.toString();
+			assertEquals(expected, uppercase);
+		} catch (IOException e) {
+			fail("IOException" + e.getMessage());
+		}
+	}
 
-  @BeforeEach
-  public void prepareTest()
-  {
-    baos = new ByteArrayOutputStream();
-    OutputStreamWriter osw = new OutputStreamWriter(baos);
-    writer = new ToUpperCaseWriter(osw);
-  }
+	@Test
+	public void charTest() {
+		write('a', "A");
+	}
 
-  @Test
-  public void writeCharTest()
-  {
-    try
-    {
-      writer.write('a');
-      writer.flush();
-      String uppercase = baos.toString();
-      assertEquals(uppercase, "A");
-      writer.close();
-    }
-    catch (IOException e)
-    {
-      fail("IOException" + e.getMessage());
-    }
-  }
+	@Test
+	public void numTest() {
+		write('1', "1");
+	}
 
-  @Test
-  public void writeCharTestWithNonChar()
-  {
-    try
-    {
-      writer.write('1');
-      writer.flush();
-      String uppercase = baos.toString();
-      assertEquals(uppercase, "1");
-      writer.close();
-    }
-    catch (IOException e)
-    {
-      fail("IOException" + e.getMessage());
-    }
-  }
-  
-  @AfterEach
-  public void cleanUp()
-  {
-    try
-    {
-      writer.close();
-    }
-    catch (IOException e)
-    {
-      fail("IOException" + e.getMessage());
-    }
-  }
+	@Test
+	public void ASCIInoChangeTest() {
+		for (int i = 0; i < (int)'a'; i++) {
+			write((char)i, String.valueOf((char)i));
+		}
+		for (int i = ((int)'z' + 1); i < 128; i++) {
+			write((char)i, String.valueOf((char)i));
+		}
+	}
+
+	@Test
+	public void ASCIIChangeTest() {
+		int diff = (int)'a' - (int)'A';
+		for (int i = (int)'a'; i <= (int)'z'; i++) {
+			write((char) i, String.valueOf((char)(i - diff)));
+		}
+	}
 }

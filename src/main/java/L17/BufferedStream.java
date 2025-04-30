@@ -21,12 +21,13 @@ public class BufferedStream {
 
 	public static void copyBuffered(String path) {
 		try (FileInputStream fis = new FileInputStream(path);
+			 BufferedInputStream bis = new BufferedInputStream(fis);
 			 FileOutputStream fos = new FileOutputStream("target/bufferedOutput");
+			 BufferedOutputStream bos = new BufferedOutputStream(fos);
 		) {
-			BufferedOutputStream bos = new BufferedOutputStream(fos);
 			int content;
 			do {
-				content = fis.read();
+				content = bis.read();
 				bos.write(content);
 			} while (content != -1);
 
@@ -63,10 +64,11 @@ public class BufferedStream {
 	}
 
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Path:");
-		String path = scanner.nextLine();
-		scanner.close();
+//		Scanner scanner = new Scanner(System.in);
+//		System.out.println("Path:");
+//		String path = scanner.nextLine();
+//		scanner.close();
+		String path = "./target/test.mp3";
 
 		long diff1 = run(BufferedStream::copyUnbuffered, path);
 		long diff2 = run(BufferedStream::copyBuffered, path);

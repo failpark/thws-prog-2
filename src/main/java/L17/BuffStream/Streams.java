@@ -43,7 +43,8 @@ public class Streams {
 		int bytes_read;
 		try {
 			do {
-				bytes_read = streams.in.read(buf);
+				// lol read(byte[], int, int) just calls read() repeatedly
+				bytes_read = streams.in.read(buf, 0, buf.length);
 				if (bytes_read != -1) streams.out.write(buf, 0, bytes_read);
 			} while(bytes_read != -1);
 		} catch (IOException e) {
@@ -58,7 +59,6 @@ public class Streams {
 			return;
 		}
 		if (files.a.length() != files.b.length()) System.out.println("File has not the same size");
-//		if (!files.b.delete()) {
 //			System.out.println("Could not delete file");
 //			System.exit(1);
 //		}

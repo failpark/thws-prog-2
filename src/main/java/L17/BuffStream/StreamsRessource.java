@@ -67,7 +67,7 @@ public class StreamsRessource extends Streams {
 		int bytes_read;
 		try(Tuple streams = Tuple.get_base_streams(files)) {
 			do {
-				bytes_read = streams.in.read(buf);
+				bytes_read = streams.in.read(buf, 0, buf.length);
 				if (bytes_read != -1) streams.out.write(buf, 0, bytes_read);
 			} while(bytes_read != -1);
 		} catch (IOException e) {
