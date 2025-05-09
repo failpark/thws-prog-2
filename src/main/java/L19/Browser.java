@@ -18,6 +18,8 @@ public class Browser {
 		if (is_last) {
 			return Optional.empty();
 		} else {
+			// new URL is deprecated since 20
+//			return Optional.of(new URL("https://duckduckgo.com"));
 			return Optional.of(new URI("https://duckduckgo.com").toURL());
 		}
 	}
