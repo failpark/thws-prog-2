@@ -31,6 +31,7 @@ public class Browser {
 		System.out.println("Normal back");
 		Browser browser = new Browser();
 		Optional<URL> back = browser.back();
-		back.ifPresent(browser::retrieveSite);
+		if (back.isPresent()) browser.retrieveSite(back.get());
+//		back.ifPresent(browser::retrieveSite);
 	}
 }
