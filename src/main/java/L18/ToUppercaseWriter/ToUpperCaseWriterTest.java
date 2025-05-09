@@ -24,11 +24,13 @@ public class ToUpperCaseWriterTest {
 	}
 
 	@Test
+	// technically redundant since this is already contained in the first 128 ASCII vals
 	public void charTest() {
 		write('a', "A");
 	}
 
 	@Test
+	// technically redundant since this is already contained in the first 128 ASCII vals
 	public void numTest() {
 		write('1', "1");
 	}
@@ -46,7 +48,7 @@ public class ToUpperCaseWriterTest {
 	@Test
 	public void ASCIIChangeTest() {
 		int diff = (int)'a' - (int)'A';
-		for (int i = (int)'a'; i <= (int)'z'; i++) {
+		for (int i = 'a'; i <= (int)'z'; i++) {
 			write((char) i, String.valueOf((char)(i - diff)));
 		}
 	}

@@ -3,7 +3,6 @@ package L18.Network_Hangman;
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 public class Client {
 	public static void main(String[] args) {
@@ -18,16 +17,11 @@ public class Client {
 			String res = br.readLine();
 			System.out.println(res);
 			while (true) {
-				// sometimes this can also just block
-				// ffs because ofc it does
-//				while (br.ready()) {
 				res = br.readLine();
+				if (res == null) break;
 				System.out.println(res);
-//				}
 				String in = scanner.nextLine();
 				os.write(in);
-				conn.setSoTimeout(1000);
-				if (Server.is_exit(in) || conn.isClosed()) break;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

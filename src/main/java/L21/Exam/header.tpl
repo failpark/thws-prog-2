@@ -1,0 +1,4 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[lmargin=2.5cm, rmargin=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\begin{document}

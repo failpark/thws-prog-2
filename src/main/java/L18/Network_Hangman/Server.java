@@ -5,7 +5,7 @@ import java.net.*;
 import java.util.InputMismatchException;
 
 public class Server {
-	public static final int PORT = 5001;
+	public static final int PORT = 5002;
 	public static void main(String[] args) {
 		Hangman game = new Hangman();
 		try(ServerSocket ss = new ServerSocket(Server.PORT);
@@ -22,7 +22,6 @@ public class Server {
 					char in = get_char(br);
 					game.add_char(in);
 				} catch(InputMismatchException e) {
-//					out.write("Only write one char or `exit`");
 					continue;
 				}
 				if (game.is_finished()) {
