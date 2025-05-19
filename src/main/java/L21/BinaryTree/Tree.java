@@ -1,10 +1,28 @@
 package L21.BinaryTree;
 
 public class Tree<T> {
+	public static class Node<T> {
+		private T inner;
+		public Node<T> left;
+		public Node<T> right;
+
+		public Node(T inner) {
+			this.inner = inner;
+		}
+
+		public T get_inner() {
+			return this.inner;
+		}
+	}
+
 	Node<T> root;
 
-	public Tree(Node<T> root) {
-		this.root = root;
+	public Tree(T root) {
+		this.root = new Node<>(root);
+	}
+
+	public Node<T> get_node(T t) {
+		return new Node<>(t);
 	}
 
 	public void print() {
