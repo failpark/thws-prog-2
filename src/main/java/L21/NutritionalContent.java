@@ -1,35 +1,68 @@
 package L21;
 
 public class NutritionalContent {
-	private int portion_size;
-	private int portion_count;
-	private int protein;
-	private int fat;
-	private int calories;
-	private int sodium;
+	private final int portionSize;
+	private final int portionCount;
+	private final int protein;
+	private final int fat;
+	private final int calories;
+	private final int sodium;
 
-	public NutritionalContent(int portion_size, int portion_count) {
-		this.portion_size = portion_size;
-		this.portion_count = portion_count;
+	private NutritionalContent(Builder builder) {
+		this.portionSize = builder.portionSize;
+		this.portionCount = builder.portionCount;
+		this.protein = builder.protein;
+		this.fat = builder.fat;
+		this.calories = builder.calories;
+		this.sodium = builder.sodium;
 	}
 
-	public NutritionalContent protein(int protein) {
-		this.protein = protein;
-		return this;
-	}
+	// Getters
+	public int getPortionSize() { return portionSize; }
+	public int getPortionCount() { return portionCount; }
+	public int getProtein() { return protein; }
+	public int getFat() { return fat; }
+	public int getCalories() { return calories; }
+	public int getSodium() { return sodium; }
 
-	public NutritionalContent fat(int fat) {
-		this.fat = fat;
-		return this;
-	}
+	public static class Builder {
+		// Required parameters
+		private final int portionSize;
+		private final int portionCount;
 
-	public NutritionalContent calories(int calories) {
-		this.calories = calories;
-		return this;
-	}
+		// Optional parameters - initialized to default values
+		private int protein = 0;
+		private int fat = 0;
+		private int calories = 0;
+		private int sodium = 0;
 
-	public NutritionalContent sodium(int sodium) {
-		this.sodium = sodium;
-		return this;
+		public Builder(int portionSize, int portionCount) {
+			this.portionSize = portionSize;
+			this.portionCount = portionCount;
+		}
+
+		public Builder protein(int protein) {
+			this.protein = protein;
+			return this;
+		}
+
+		public Builder fat(int fat) {
+			this.fat = fat;
+			return this;
+		}
+
+		public Builder calories(int calories) {
+			this.calories = calories;
+			return this;
+		}
+
+		public Builder sodium(int sodium) {
+			this.sodium = sodium;
+			return this;
+		}
+
+		public NutritionalContent build() {
+			return new NutritionalContent(this);
+		}
 	}
 }
