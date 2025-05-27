@@ -1,8 +1,8 @@
 package L21.BinaryTree;
 
-public class Tree<T> {
-	public static class Node<T> {
-		private T inner;
+public class Tree<T extends Comparable<T>> {
+	public static class Node<T extends Comparable<T>> {
+		private final T inner;
 		public Node<T> left;
 		public Node<T> right;
 
@@ -12,6 +12,10 @@ public class Tree<T> {
 
 		public T get_inner() {
 			return this.inner;
+		}
+
+		public int compareTo(Node<T> o) {
+			return this.inner.compareTo(o.inner);
 		}
 	}
 
@@ -27,6 +31,24 @@ public class Tree<T> {
 
 	public void print() {
 		System.out.println(get_structure());
+	}
+
+	public void insert(T n) {
+		if (this.root == null) {
+			this.root = new Node<>(n);
+			return;
+		}
+		insert(this.root, new Node<>(n));
+	}
+
+	private void insert(Node<T> tmp, Node<T> n) {
+		if (tmp.compareTo(n) < 0) {
+			if (tmp.left == null) tmp.left = n;
+			else insert(tmp.left, n);
+		} else {
+			if (tmp.right == null) tmp.right = n;
+			else insert(tmp.right, n);
+		}
 	}
 
 	@Override
